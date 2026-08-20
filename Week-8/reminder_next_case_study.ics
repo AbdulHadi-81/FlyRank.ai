@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//FlyRank AI Engineering Track//Portfolio Reminder//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+SUMMARY:[FlyRank AI Portfolio] Build & Publish Next Case Study: RAG Code Search Engine
+UID:flyrank-week09-reminder-20260915@haditci.site
+DTSTART;TZID=Asia/Karachi:20260915T100000
+DTEND;TZID=Asia/Karachi:20260915T110000
+DESCRIPTION:Time to build and publish the next portfolio case study on AbdulHadi-81.github.io!\n\nTarget Project: Autonomous RAG & Semantic Code Search Engine\nWorkflow: 3-beat shape (Problem -> What You Did -> Empirical Outcome)\nReference Guide: NEXT_CASE_STUDY_PLAN.md
+LOCATION:AbdulHadi-81.github.io
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Build & Publish Next Case Study
+END:VALARM
+END:VEVENT
+END:VCALENDAR
