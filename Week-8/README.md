@@ -2,6 +2,10 @@
 
 > **FlyRank Backend AI Engineering Track — Capstone Project (FL-09 / FL-10)**
 
+[![Demo Video](https://img.shields.io/badge/Demo_Video-Watch_Live_Demo-blue?style=for-the-badge&logo=playstation)](https://gofile.io/d/wgTKKGT2)
+
+> 📹 **Live Demo Video (3-5 min)**: [Watch Live End-to-End Walkthrough & Architecture Breakdown](https://gofile.io/d/wgTKKGT2)
+
 An interactive, visual AI workflow editor and step-wise execution engine. **AI Workflow Builder** allows developers, automation engineers, and operations teams to visually model decision trees where each graph node represents an AI decision point that evaluates a prompt and strictly returns `YES` or `NO`. 
 
 The execution is powered by **Inngest**, ensuring every decision step is executed as a durable function with isolated retry boundaries, state logging, and visual graph traversal feedback.
