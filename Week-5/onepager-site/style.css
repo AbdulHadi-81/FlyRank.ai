@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap');
+
+:root {
+  --bg: #F7F4EC;
+  --ink: #1D2939;
+  --muted: #626C79;
+  --line: #DAD3C2;
+  --accent: #D2622F;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 80px 28px 60px;
+}
+
+.eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 12px;
+}
+
+h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: clamp(2.4rem, 7vw, 3.2rem);
+  margin: 0 0 18px;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.3rem;
+  margin: 0 0 14px;
+}
+
+p { margin: 0 0 12px; }
+.lead { font-size: 1.1rem; color: var(--muted); max-width: 520px; }
+.muted { color: var(--muted); font-size: 15px; }
+
+a { color: var(--ink); }
+.muted a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--line); }
+
+.top { margin-bottom: 56px; }
+
+section { margin-bottom: 48px; padding-top: 32px; border-top: 1px solid var(--line); }
+
+.link-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.link-card {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-decoration: none;
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 16px 18px;
+  transition: border-color .15s, transform .15s;
+  flex: 1 1 45%;
+  min-width: 220px;
+}
+.link-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+.link-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.link-sub {
+  font-size: 14px;
+  color: var(--ink);
+}
+
+footer {
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 480px) {
+  .link-card { flex: 1 1 100%; }
+}

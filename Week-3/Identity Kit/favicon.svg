@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <style>
+      @font-face {
+        font-family: 'Space Grotesk';
+        src: url('fonts/SpaceGrotesk-Bold.ttf');
+      }
+    </style>
+  </defs>
+  <rect width="128" height="128" rx="26" fill="#1E3D59"/>
+  <text x="64" y="86" font-family="Space Grotesk, sans-serif" font-weight="700"
+        font-size="58" fill="#FAF9F6" text-anchor="middle">AH</text>
+</svg>
