@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F2NT7NGS4K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-F2NT7NGS4K');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work — Abdul Hadi</title>
+  <meta name="description"
+    content="Case studies: a Resume Analyzer agent built with Mistral, a FastAPI/Postgres backend, and a Supabase auth system — with the messy parts documented.">
+  <meta property="og:title" content="Work — Abdul Hadi">
+  <meta property="og:description"
+    content="Case studies: a Resume Analyzer agent, a FastAPI/Postgres backend, and a Supabase auth system.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://haditci.site/work.html">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <nav class="site-nav">
+    <div class="wrap">
+      <a class="brand" href="index.html">Abdul Hadi</a>
+      <ul class="navlinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="work.html" class="active">Work</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section>
+      <div class="wrap">
+        <p class="eyebrow">Work / Case Studies</p>
+        <h1>What I've actually shipped — with the messy parts left in.</h1>
+        <p class="muted" style="max-width:640px;">Three projects, in order of how directly they prove the claim: an
+          agent
+          that makes structured judgment calls on real input, not just a script that calls an API.</p>
+
+        <!-- CASE STUDY 1: RESUME ANALYZER -->
+        <div class="case" style="border-top:none; padding-top:40px;">
+          <span class="tag">Lead project</span>
+          <h2>Resume Analyzer</h2>
+          <p>An agent that reads a resume and produces structured judgment on it: an overall score out of 100 with a
+            summary verdict, an extracted breakdown of the candidate's actual details, and a checklist of specific gaps
+            the candidate should fix. Built in Python, using the Mistral API for the reasoning layer, with a backend
+            that
+            forces the model's output into a consistent, structured format rather than letting it return free text.</p>
+
+          <div class="shot-row">
+            <figure>
+              <img src="assets/screenshot1_score.png" alt="Overall score and summary verdict from the Resume Analyzer">
+              <figcaption>Overall score + summary</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/screenshot2_details.png" alt="Extracted candidate details and suggested improvements">
+              <figcaption>Extracted details + improvements</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/screenshot3_gaps.png" alt="Gaps checklist output">
+              <figcaption>Gaps checklist</figcaption>
+            </figure>
+          </div>
+
+          <div class="callout">
+            <h4>Where it broke, and what I did about it</h4>
+            <p style="margin-bottom:0;">Early on, I ran a resume with inconsistent formatting — no clear section
+              headers,
+              work experience and education blended together — and the agent mis-scored it. It couldn't reliably tell
+              where one section ended and another began, so the "extracted details" output came back thin and the score
+              didn't reflect the candidate's actual profile. I fixed this by adjusting the model's instructions to
+              handle
+              missing or unclear section boundaries gracefully — explicitly telling it what to do when a section isn't
+              clearly labeled, instead of assuming every resume would arrive well-structured. That's the difference
+              between a demo that only works on clean inputs and something closer to what this needs to actually be: a
+              judgment call under real-world mess.</p>
+          </div>
+
+          <div class="callout note">
+            <h4>Known issue — being upfront about it</h4>
+            <p style="margin-bottom:0;">The app currently labels a result "Local backup" when it was actually generated
+              by
+              a real model (Mistral) — the UI's check only looks for an OpenAI API key specifically, so a
+              Mistral-powered
+              result gets mislabeled. The analysis itself is real; the label is wrong. This is on my list to fix before
+              I'd call this fully production-ready — see the "still ugly" list on my submission.</p>
+          </div>
+        </div>
+
+        <!-- CASE STUDY 2: CRUD API -->
+        <div class="case">
+          <span class="tag">Foundations</span>
+          <h2>Building My First CRUD API</h2>
+          <p>Before this, "API" felt like a huge, complicated word. I built a Task API in Python using FastAPI, step by
+            step — starting from a basic server, then adding one endpoint at a time: listing, getting, creating,
+            updating,
+            and deleting tasks.</p>
+          <p>One decision I made was around validation: rejecting a task with an empty title. I didn't just follow a
+            rule
+            — if you ask someone for water and they hand you a burger, you're not going to accept it, because it's not
+            what you asked for. If the data doesn't match what's actually being asked for, it shouldn't be allowed
+            through.</p>
+          <p class="muted">Result: I went from not understanding API fundamentals at all, to being able to read an error
+            and diagnose it myself — because I understand the logic behind what I built, not just the code I copied.</p>
+        </div>
+
+        <!-- CASE STUDY 3: POSTGRES -->
+        <div class="case">
+          <span class="tag">Persistence</span>
+          <h2>Making My Data Survive — Postgres Migration</h2>
+          <p>My CRUD API worked, but every task disappeared on restart — data only lived in memory. I restructured the
+            code into layers (routes, business logic, storage) so the storage method could be swapped without touching
+            the
+            rest, then moved from an in-memory list to a real Postgres database.</p>
+          <p>Along the way, my machine's BIOS had virtualization disabled and locked behind a password from a previous
+            admin — Docker couldn't run. I didn't give up: I installed Postgres directly instead and kept going. I
+            didn't
+            get there the "right" way through Docker, but I stayed dedicated to the actual goal.</p>
+          <p class="muted">Result: I created a task, restarted the database and server, and the task was still there.
+            That
+            was the real point — make data outlive a restart. I did.</p>
+        </div>
+
+        <hr class="rule">
+        <p class="eyebrow">Before / after — cutting the generic AI voice</p>
+        <p class="muted" style="max-width:640px; font-style:italic;">"This project demonstrates a results-driven
+          approach
+          to building scalable, robust backend systems, leveraging industry-standard tools to deliver a seamless,
+          production-ready solution."</p>
+        <p style="max-width:640px;">→ "I made my task data survive a restart. I hit a wall with Docker I couldn't get
+          around, so I found another way to get there — and it worked."</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>Abdul Hadi — Portfolio</span>
+      <span><a href="contact.html">Get in touch →</a></span>
+    </div>
+
+    <footer>
+      <div class="wrap">
+        <span>Abdul Hadi — Portfolio</span>
+        <span>Built with static HTML/CSS, hosted on GitHub Pages</span>
+      </div>
+
+      <p class="muted" style="font-size:13px; margin-top:8px;">
+        FlyRank Graduate Badge — pending capstone approval and issuance.
+      </p>
+
+    </footer>
+
+  </footer>
+
+</body>
+
+</html>
